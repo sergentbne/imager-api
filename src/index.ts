@@ -3,6 +3,10 @@ import * as v from 'valibot'
 import { $ } from "bun";
 
 const app = new Elysia().get("/centralimg", async ({ query }) => {
+	set.headers['Cache-Control'] =
+		'no-store, no-cache, must-revalidate, proxy-revalidate'
+	set.headers['Pragma'] = 'no-cache'
+	set.headers['Expires'] = '0'
   const default_config = {
     "working_directory": "/opt/LRIMa-central",
     "filename_of_repo": "iot_stuff",
